@@ -1,0 +1,92 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <app-form2></app-form2>
+
+    </div>
+    <div class="col-md-6">
+
+
+
+
+      <h1>Boot camp Enrollment Form</h1>
+      <form #userForm="ngForm">
+
+        {{userForm.value | json}}
+        <hr />
+        {{userModel|json}}
+
+        <br /><br />
+        <hr />
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+            class="form-control" name='txtName' [(ngModel)]="userModel.name" />
+        </div>
+
+        {{name.className}}
+        <br />
+        {{name.untouched}}
+        <br />
+        {{name.pristine}}
+        <br />
+        {{name.value}}
+        <br />
+        {{name.valid}}
+
+
+        <hr />
+
+        <div class="form-group">
+          <label>
+            Email
+          </label>
+          <input type="email" class="form-control" name='txtemail' [(ngModel)]="userModel.email" />
+        </div>
+
+        <div class="form-group">
+          <label>Phone </label>
+          <input type="tel" class="form-control" name='txtPhone' #phone="ngModel" pattern="^\d{10}$"
+            [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone" />
+        </div>
+        #name="ngModel"
+        [class.is-invalid]="phone.invalid && phone.touched"
+        <div class="form-group">
+          <label>Topic</label>
+          <select class="custom-select" name='cmbTopic' [(ngModel)]="userModel.topic">
+            <option *ngFor="let topic of topics">{{topic}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Time preference</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timepreference" value="morning"
+              [(ngModel)]="userModel.timePreference">
+            <label class="form-check-label">Morning (9AM - 12PM)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="timepreference" value="evening"
+              [(ngModel)]="userModel.timePreference">
+            <label class="form-check-label">Evening (1pm - 5 pm)</label>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="chkpromo" [(ngModel)]="userModel.subscribe">
+            <label class="form-check-label">Send me promotional offers</label>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Submit form</button>
+
+        </div>
+
+
+
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
