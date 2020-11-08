@@ -16,6 +16,7 @@ export class Form2Component implements OnInit {
   }
 
   topics = ['Angular', 'React', 'Vue'];
+  enabled=true;
   topicHasError = true;
   userModel = new UserData('', 'rob@test.com', 718199723, 'default', 'morning', true)
   submitted = false;
